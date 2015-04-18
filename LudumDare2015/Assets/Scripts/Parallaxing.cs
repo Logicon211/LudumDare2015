@@ -6,7 +6,7 @@ public class Parallaxing : MonoBehaviour {
 	public Transform[] backgrounds;
 	private float[] parallaxScales;
 	public float smoothing = 1f;
-	public float scrollSpeedRatio = 500f;
+	public float scrollSpeedRatio = 150f;
 
 	private Transform cam;
 	private Vector3 previousCamPos;
