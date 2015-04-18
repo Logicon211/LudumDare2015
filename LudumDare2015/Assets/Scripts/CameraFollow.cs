@@ -9,27 +9,28 @@ public class CameraFollow : MonoBehaviour
 	public float ySmooth = 8f;		// How smoothly the camera catches up with it's target movement in the y axis.
 	
 	
-	private Transform player;		// Reference to the player's transform.
+	public GameObject player;		// Reference to the player's transform.
 	
 	
 	void Awake ()
 	{
 		// Setting up the reference.
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		//player = GameObject.FindGameObjectWithTag("Player").transform;
+		//Debug.Log(player);
 	}
 	
 	
 	bool CheckXMargin()
 	{
 		// Returns true if the distance between the camera and the player in the x axis is greater than the x margin.
-		return Mathf.Abs(transform.position.x - player.position.x) < xMargin;
+		return Mathf.Abs(transform.position.x - player.transform.position.x) < xMargin;
 	}
 	
 	
 	bool CheckYMargin()
 	{
 		// Returns true if the distance between the camera and the player in the y axis is greater than the y margin.
-		return Mathf.Abs(transform.position.y - player.position.y) > yMargin;
+		return Mathf.Abs(transform.position.y - player.transform.position.y) > yMargin;
 	}
 	
 	
@@ -56,7 +57,7 @@ public class CameraFollow : MonoBehaviour
 			//targetY = Mathf.Lerp(transform.position.y, player.position.y, ySmooth * Time.deltaTime);
 		
 		// Set the camera's position to the target position with the same z component.
-		//Debug.Log(targetX + ", " + targetY);
-		transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+		//Debug.Log(player.position.x + ", " + player.position.y);
+		transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
 	}
 }

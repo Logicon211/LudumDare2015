@@ -11,29 +11,44 @@ public class NuclearMan : MonoBehaviour {
 	public float jumpSpeed = 20f;
 	public float climbSpeed = 12f;
 
+	public float deadZone = 0.1f;
+
 	private Rigidbody2D RB;
 	private Animator anim;
 
 
 	private Transform groundCheck;
+	private float groundCheckRadius = 0.5f;
 	private bool grounded = false;			// Whether or not the player is grounded.
+
+	private float g = 0;
+	private int touchingPlatforms = 0;
+	private BoxCollider2D heroCollider;
 
 	// Use this for initialization
 	void Start () {
 		RB = GetComponent<Rigidbody2D>();
 		groundCheck = transform.FindChild ("groundCheck");
+		g = RB.gravityScale;
+		heroCollider = GetComponent<BoxCollider2D>();
 	}
 
 	void Update() {
-		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
-
+	
+		// The player is grounded if a ground check overlaps with anything on the ground layer.
+		grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, 1 << LayerMask.NameToLayer("Ground")) || Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, 1 << LayerMask.NameToLayer("OneWayPlatform"));  
+	
 
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		bool touchingVines = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Vines"));
 		if(Input.GetAxis("Vertical") > 0 && grounded && !touchingVines) {
 			jump = true;
 		}
+
+		if(Input.GetAxis("Vertical") < 0 && heroCollider.IsTouchingLayers(1 << LayerMask.NameToLayer("OneWayPlatform"))) {
+			RB.gravityScale = g;
+		}
+
 
 	}
 	
@@ -77,6 +92,29 @@ public class NuclearMan : MonoBehaviour {
 	{
 		if(col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
 			anim.SetBool("Jumping", false);
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D col) {
+		if(col.CompareTag("OneWayPlatform")) {
+			touchingPlatforms++;
+
+			//float maxDistance = (col.transform.localScale.y + transform.localScale.y) / 2;
+
+			//if(RB.velocity.y < 0 && transform.position.y - col.transform.position.y - RB.velocity.y * Time.fixedDeltaTime > maxDistance - deadZone) {
+
+			if(RB.velocity.y < 0) {// && transform.position.y - col.transform.position.y > maxDistance) {
+				RB.gravityScale = 0;
+				RB.velocity = new Vector2(RB.velocity.x, 0);
+				anim.SetBool("Jumping", false);
+				//transform.position = new Vector3(transform.position.x, col.transform.position.y + maxDistance, 0);
+			}
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col) {
+		if(col.CompareTag("OneWayPlatform") && touchingPlatforms-- == 1) {
+			RB.gravityScale = g;
 		}
 	}
 
