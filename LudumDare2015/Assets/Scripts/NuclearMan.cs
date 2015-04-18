@@ -62,10 +62,8 @@ public class NuclearMan : MonoBehaviour {
 				laserInstance.transform.localScale = laserScale;
 			}
 		} else if( Input.GetButton("Laser")) {
-			Debug.Log("CONTINUE FIRE");
 			laserInstance.transform.position = transform.position;
 		} else if (Input.GetButtonUp("Laser")) {
-			Debug.Log("STOP FIRE");
 			Destroy(laserInstance);
 		}
 
