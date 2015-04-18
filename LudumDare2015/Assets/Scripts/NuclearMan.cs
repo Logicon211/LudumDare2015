@@ -13,6 +13,9 @@ public class NuclearMan : MonoBehaviour {
 
 	public float deadZone = 0.1f;
 
+	public GameObject laser;
+	private GameObject laserInstance;
+
 	private Rigidbody2D RB;
 	private Animator anim;
 
@@ -24,6 +27,7 @@ public class NuclearMan : MonoBehaviour {
 	private float g = 0;
 	private int touchingPlatforms = 0;
 	private BoxCollider2D heroCollider;
+
 
 	// Use this for initialization
 	void Start () {
@@ -49,6 +53,22 @@ public class NuclearMan : MonoBehaviour {
 			RB.gravityScale = g;
 		}
 
+		//Firing Laser
+		if(Input.GetButtonDown("Laser")) {
+			laserInstance = Instantiate(laser, transform.position, transform.rotation) as GameObject;
+			if(!facingRight) {
+				Vector3 laserScale = laserInstance.transform.localScale;
+				laserScale.x *= -1;
+				laserInstance.transform.localScale = laserScale;
+			}
+		} else if( Input.GetButton("Laser")) {
+			Debug.Log("CONTINUE FIRE");
+			laserInstance.transform.position = transform.position;
+		} else if (Input.GetButtonUp("Laser")) {
+			Debug.Log("STOP FIRE");
+			Destroy(laserInstance);
+		}
+
 
 	}
 	
@@ -66,7 +86,9 @@ public class NuclearMan : MonoBehaviour {
 		} else if(Input.GetAxis("Vertical") > 0 && touchingVines) {
 			//Vine Climbing
 			RB.velocity = new Vector2(0, climbSpeed);
-			//Set animation to climb
+			anim.SetBool("Climbing", true);
+		} else {
+			anim.SetBool("Climbing", false);
 		}
 
 		float move = Input.GetAxis("Horizontal");
