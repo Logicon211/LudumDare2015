@@ -6,6 +6,7 @@ public class Parallaxing : MonoBehaviour {
 	public Transform[] backgrounds;
 	private float[] parallaxScales;
 	public float smoothing = 1f;
+	public float scrollSpeedRatio = 500f;
 
 	private Transform cam;
 	private Vector3 previousCamPos;
@@ -31,7 +32,9 @@ public class Parallaxing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		for (int i = 0; i < backgrounds.Length; i++) {
-			float parallax = (previousCamPos.x - cam.position.x) * parallaxScales [i];
+			float parallax = (previousCamPos.x - cam.position.x) * (scrollSpeedRatio/parallaxScales [i]);
+
+			Debug.Log("Background " + i + ": " + parallax);
 
 			float backgroundTargetPosX = backgrounds [i].position.x + parallax;
 
@@ -45,44 +48,3 @@ public class Parallaxing : MonoBehaviour {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
