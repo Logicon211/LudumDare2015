@@ -14,8 +14,8 @@ public class Movement : MonoBehaviour {
 	void Update () {
 		if(Input.GetKey(KeyCode.LeftArrow)) 
 		{
-			playerRigidbody.velocity += (new Vector2(-transform.right.x, -transform.right.y) * 100f * Time.deltaTime);
-			//rigidbody.AddForce(-transform.right * 5000f * Time.deltaTime);
+			//playerRigidbody.velocity += (new Vector2(-transform.right.x, -transform.right.y) * 100f * Time.deltaTime);
+			playerRigidbody.AddForce(-transform.right * 5000f * Time.deltaTime);
 		}
 		if(Input.GetKey(KeyCode.RightArrow)) {
 			playerRigidbody.AddForce(transform.right * 5000f * Time.deltaTime);

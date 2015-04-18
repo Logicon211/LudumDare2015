@@ -9,6 +9,7 @@ public class NuclearMan : MonoBehaviour {
 	public bool facingRight = true;
 	public float speed = 10f;
 	public float jumpSpeed = 20f;
+	public float climbSpeed = 12f;
 
 	private Rigidbody2D RB;
 	private Animator anim;
@@ -26,9 +27,11 @@ public class NuclearMan : MonoBehaviour {
 	void Update() {
 		// The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
-		
+
+
 		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetAxis("Vertical") > 0 && grounded) {
+		bool touchingVines = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Vines"));
+		if(Input.GetAxis("Vertical") > 0 && grounded && !touchingVines) {
 			jump = true;
 		}
 
@@ -38,6 +41,19 @@ public class NuclearMan : MonoBehaviour {
 	void FixedUpdate () {
 
 		anim = GetComponent<Animator>();
+
+		bool touchingVines = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Vines"));
+		if (jump) {
+			//RB.AddForce(new Vector2(0f, jumpForce));
+			RB.velocity = new Vector2(RB.velocity.x, jumpSpeed);
+			anim.SetBool("Jumping", true);
+			jump = false; //reset the jump flag so it doesn't happen again immediately
+		} else if(Input.GetAxis("Vertical") > 0 && touchingVines) {
+			//Vine Climbing
+			RB.velocity = new Vector2(0, climbSpeed);
+			//Set animation to climb
+		}
+
 		float move = Input.GetAxis("Horizontal");
 
 		if(move != 0/*Input.GetKey(KeyCode.RightArrow*/) {
@@ -54,13 +70,6 @@ public class NuclearMan : MonoBehaviour {
 			anim.SetBool("Moving", true);
 		} else {
 			anim.SetBool("Moving", false);
-		}
-
-		if (jump) {
-			//RB.AddForce(new Vector2(0f, jumpForce));
-			RB.velocity = new Vector2(RB.velocity.x, jumpSpeed);
-			anim.SetBool("Jumping", true);
-			jump = false; //reset the jump flag so it doesn't happen again immediately
 		}
 	}
 
