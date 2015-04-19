@@ -14,7 +14,6 @@ public class explosion : MonoBehaviour {
 	}
 
 	public void EndExplosion () {
-		Debug.Log("DESTROY");
 		Destroy(this.gameObject);
 	}
 

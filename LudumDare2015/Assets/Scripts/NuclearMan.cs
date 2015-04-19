@@ -22,7 +22,7 @@ public class NuclearMan : MonoBehaviour {
 
 
 	private Transform groundCheck;
-	private float groundCheckRadius = 0.5f;
+	private float groundCheckRadius = 1f;
 	private bool grounded = false;			// Whether or not the player is grounded.
 
 	private float g = 0;
@@ -32,12 +32,17 @@ public class NuclearMan : MonoBehaviour {
 	public Scrollbar HeatBar;
 	public float Heat = 100;
 
+	public bool isPunching = false;
+	public bool isLasering = false;
+	private Transform laserPoint;
+
 	// Use this for initialization
 	void Start () {
 		RB = GetComponent<Rigidbody2D>();
 		groundCheck = transform.FindChild ("groundCheck");
 		g = RB.gravityScale;
 		heroCollider = GetComponent<BoxCollider2D>();
+		laserPoint = transform.FindChild("LaserPoint");
 	}
 
 	void Update() {
@@ -59,20 +64,26 @@ public class NuclearMan : MonoBehaviour {
 		//Punching
 		if(Input.GetButtonDown("Punch")) {
 			anim.SetBool("Punching", true);
+			isPunching = true;
+			speed = 4f;
 		} else if(Input.GetButtonUp("Punch")) {
 			anim.SetBool("Punching", false);
+			isPunching = false;
+			speed = 10f;
 		}
 
 		//Firing Laser
 		if (Input.GetButtonDown ("Laser")) {
-			if(Heat >= 5){
-			laserInstance = Instantiate (laser, transform.position, transform.rotation) as GameObject;
-			Damage (5);
-			if (!facingRight) {
-				Vector3 laserScale = laserInstance.transform.localScale;
-				laserScale.x *= -1;
-				laserInstance.transform.localScale = laserScale;
-			}
+			if(Heat >= 5)	{
+				anim.SetBool("Lasering", true);
+				isLasering = true;
+				laserInstance = Instantiate (laser, laserPoint.position, transform.rotation) as GameObject;
+				ChangeHeat (5);
+				if (!facingRight) {
+					Vector3 laserScale = laserInstance.transform.localScale;
+					laserScale.x *= -1;
+					laserInstance.transform.localScale = laserScale;
+				}
 			}
 			else{
 				
@@ -83,17 +94,21 @@ public class NuclearMan : MonoBehaviour {
 		} else if (Input.GetButton ("Laser")) {
 			
 			if(Heat >= 5){
-			Damage (5);
-			laserInstance.transform.position = transform.position;
+				ChangeHeat (5);
+				laserInstance.transform.position = laserPoint.position;
 			}
 			else{
+				anim.SetBool("Lasering", false);
+				isLasering = false;
 				Destroy (laserInstance);
 			}
 		} else if (Input.GetButtonUp ("Laser")) {
+			anim.SetBool("Lasering", false);
+			isLasering = false;
 			Destroy (laserInstance);
 		} else {
 			if(Heat < 100){
-			Damage (-2);
+				ChangeHeat (-2);
 
 			}
 		}
@@ -124,11 +139,11 @@ public class NuclearMan : MonoBehaviour {
 
 		if(move != 0/*Input.GetKey(KeyCode.RightArrow*/) {
 			if(move > 0) {
-				if(!facingRight) {
+				if(!facingRight && !isLasering) {
 					Flip();
 				}
 			} else {
-				if(facingRight) {
+				if(facingRight && !isLasering) {
 					Flip();
 				}
 			}
@@ -163,7 +178,7 @@ public class NuclearMan : MonoBehaviour {
 		}
 	}
 
-	public void Damage(float value){
+	public void ChangeHeat(float value){
 		Heat -= value;
 		HeatBar.size = Heat / 100f;
 	}

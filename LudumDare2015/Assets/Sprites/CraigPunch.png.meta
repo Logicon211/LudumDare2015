@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: 32b487ad28de2e44492c87781e9fbe22
+timeCreated: 1429466385
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CraigPunch_0
+    21300002: CraigPunch_1
+    21300004: CraigPunch_2
+    21300006: CraigPunch_3
+    21300008: CraigPunch_4
+    21300010: CraigPunch_5
+    21300012: CraigPunch_6
+    21300014: CraigPunch_7
+    21300016: CraigPunch_8
+    21300018: CraigPunch_9
+    21300020: CraigPunch_10
+    21300022: CraigPunch_11
+    21300024: CraigPunch_12
+    21300026: CraigPunch_13
+    21300028: CraigPunch_14
+    21300030: CraigPunch_15
+    21300032: CraigPunch_16
+    21300034: CraigPunch_17
+    21300036: CraigPunch_18
+    21300038: CraigPunch_19
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CraigPunch_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_1
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_2
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_3
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_4
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_5
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_6
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_7
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_8
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_9
+      rect:
+        serializedVersion: 2
+        x: 3240
+        y: 360
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_11
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 0
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_12
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 0
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_13
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 0
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_14
+      rect:
+        serializedVersion: 2
+        x: 1443
+        y: 0
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_15
+      rect:
+        serializedVersion: 2
+        x: 1807
+        y: 0
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_16
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 0
+        width: 360
+        height: 360
+      alignment: 9
+      pivot: {x: .349999994, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_17
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 360
+        height: 360
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_18
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 360
+        height: 360
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CraigPunch_19
+      rect:
+        serializedVersion: 2
+        x: 3240
+        y: 0
+        width: 360
+        height: 360
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
