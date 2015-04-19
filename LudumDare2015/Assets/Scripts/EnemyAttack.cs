@@ -8,18 +8,24 @@ public class EnemyAttack : MonoBehaviour {
 	private bool isHugging = false;
 
 	private float currSpeed;
+	private Enemy enemy;
 	// Use this for initialization
 	void Start () {
 		currSpeed = atkSpeed;
+		enemy = transform.parent.GetComponent<Enemy>();
 	}
 	void Update(){
 		//Debug.Log (currSpeed);
 		if (currSpeed > 0){
 			currSpeed -= Time.deltaTime;
 		}
+		if (currSpeed <= 0){
+			enemy.attackReady = true;
+		}
 		if (currSpeed < 0 && isHugging){
 			currSpeed = atkSpeed;
 			Debug.Log ("This man has accosted you");
+			enemy.attackReady = false;
 
 		}
 
