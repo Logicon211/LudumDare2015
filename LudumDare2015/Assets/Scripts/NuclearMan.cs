@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class NuclearMan : MonoBehaviour {
 
@@ -28,6 +29,8 @@ public class NuclearMan : MonoBehaviour {
 	private int touchingPlatforms = 0;
 	private BoxCollider2D heroCollider;
 
+	public Scrollbar HeatBar;
+	public float Heat = 100;
 
 	// Use this for initialization
 	void Start () {
@@ -54,17 +57,38 @@ public class NuclearMan : MonoBehaviour {
 		}
 
 		//Firing Laser
-		if(Input.GetButtonDown("Laser")) {
-			laserInstance = Instantiate(laser, transform.position, transform.rotation) as GameObject;
-			if(!facingRight) {
+		if (Input.GetButtonDown ("Laser")) {
+			if(Heat >= 5){
+			laserInstance = Instantiate (laser, transform.position, transform.rotation) as GameObject;
+			Damage (5);
+			if (!facingRight) {
 				Vector3 laserScale = laserInstance.transform.localScale;
 				laserScale.x *= -1;
 				laserInstance.transform.localScale = laserScale;
 			}
-		} else if( Input.GetButton("Laser")) {
+			}
+			else{
+				
+				//Rect rectGUILabel = new Rect (0,0,Screen.width,Screen.height),"Not Enough PowerHeat Kill More");
+				//GUI.Label(Rect(0,0,Screen.width,Screen.height),"Not Enough PowerHeat Kill More");
+			}
+
+		} else if (Input.GetButton ("Laser")) {
+			
+			if(Heat >= 5){
+			Damage (5);
 			laserInstance.transform.position = transform.position;
-		} else if (Input.GetButtonUp("Laser")) {
-			Destroy(laserInstance);
+			}
+			else{
+				Destroy (laserInstance);
+			}
+		} else if (Input.GetButtonUp ("Laser")) {
+			Destroy (laserInstance);
+		} else {
+			if(Heat < 100){
+			Damage (-2);
+
+			}
 		}
 
 
@@ -130,6 +154,12 @@ public class NuclearMan : MonoBehaviour {
 				//transform.position = new Vector3(transform.position.x, col.transform.position.y + maxDistance, 0);
 			}
 		}
+	}
+
+	public void Damage(float value){
+		Heat -= value;
+		HeatBar.size = Heat / 100f;
+		Debug.Log (Heat);
 	}
 
 	void OnTriggerExit2D(Collider2D col) {

@@ -20,8 +20,6 @@ void OnGUI()
 	//Rect rectGUILabel = new Rect (halfCameraWidth + 10, Screen.height - pos.y - 15, 100, 22);   
 		//this.transform.position = new Vector3(halfCameraWidth, Screen.height - pos.y - 15, 22);
 		this.transform.position = new Vector3(300, Screen.height-30, 22);
-		Debug.Log(Screen.height / 2);
-		Debug.Log(Screen.width / 2);
 
 
 
