@@ -43,19 +43,19 @@ public class EnemyAttack : MonoBehaviour {
 			player = other.gameObject.GetComponent<NuclearMan>();
 			isHugging = true;
 		}
-		}
+
 	}
 
 	void OnTriggerExit2D(Collider2D other){
-		if(other.CompareTag("Player")) {
+		if (other.CompareTag ("Player")) {
 			player = null;
 			isHugging = false;
 		}
-		}
 	}
+	
 
 
-	void Attack(){
+		void Attack(){
 		transform.Translate(Vector2.right  * 10, Space.Self);
 		//transform.Translate(-Vector2.right * 10, Space.Self);
 	}

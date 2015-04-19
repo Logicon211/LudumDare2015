@@ -208,6 +208,6 @@ public class NuclearMan : MonoBehaviour {
 	public void Damage(float value){
 		Health -= value;
 		HealthBar.size = Health / 100f;
-		Debug.Log (Health);
+		//Debug.Log (Health);
 	}
 }
