@@ -36,6 +36,9 @@ public class NuclearMan : MonoBehaviour {
 	public bool isLasering = false;
 	private Transform laserPoint;
 
+	public Scrollbar HealthBar;
+	public float Health = 100;
+
 	// Use this for initialization
 	void Start () {
 		RB = GetComponent<Rigidbody2D>();
@@ -200,5 +203,11 @@ public class NuclearMan : MonoBehaviour {
 			childScale.x  *= -1;
 			child.localScale = childScale;
 		}
+	}
+
+	public void Damage(float value){
+		Health -= value;
+		HealthBar.size = Health / 100f;
+		Debug.Log (Health);
 	}
 }

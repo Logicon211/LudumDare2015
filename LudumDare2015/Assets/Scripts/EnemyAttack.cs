@@ -9,6 +9,8 @@ public class EnemyAttack : MonoBehaviour {
 
 	private float currSpeed;
 	private Enemy enemy;
+
+	private NuclearMan player;
 	// Use this for initialization
 	void Start () {
 		currSpeed = atkSpeed;
@@ -22,22 +24,32 @@ public class EnemyAttack : MonoBehaviour {
 		if (currSpeed <= 0){
 			enemy.attackReady = true;
 		}
-		if (currSpeed < 0 && isHugging){
+		if (currSpeed <= 0 && isHugging && player != null){
 			currSpeed = atkSpeed;
-			Debug.Log ("This man has accosted you");
+			player.Damage(5f);
 			enemy.attackReady = false;
 
 		}
 
+		if(isHugging) {
+			transform.parent.GetComponent<Animator>().SetBool("Punching", true);
+		} else {
+			transform.parent.GetComponent<Animator>().SetBool("Punching", false);
+		}
+
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		isHugging = true;
-		Debug.Log ("hugging");
+		if(other.CompareTag("Player")) {
+			player = other.gameObject.GetComponent<NuclearMan>();
+			isHugging = true;
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D other){
-		isHugging = false;
-		Debug.Log ("Not hugging");
+		if(other.CompareTag("Player")) {
+			player = null;
+			isHugging = false;
+		}
 	}
 
 
