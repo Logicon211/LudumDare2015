@@ -51,6 +51,8 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyAttack.cs" />
+     <Compile Include="Assets\Scripts\GUIBorderBar.cs" />
+     <Compile Include="Assets\Scripts\GUIBorderText.cs" />
      <Compile Include="Assets\Scripts\GUIHeatBar.cs" />
      <Compile Include="Assets\Scripts\GUIPlacement.cs" />
      <Compile Include="Assets\Scripts\HeatTest.cs" />
