@@ -34,8 +34,6 @@ public class Parallaxing : MonoBehaviour {
 		for (int i = 0; i < backgrounds.Length; i++) {
 			float parallax = (previousCamPos.x - cam.position.x) * (scrollSpeedRatio/parallaxScales [i]);
 
-			Debug.Log("Background " + i + ": " + parallax);
-
 			float backgroundTargetPosX = backgrounds [i].position.x + parallax;
 
 			Vector3 backgroundTargetPos = new Vector3 (backgroundTargetPosX, backgrounds[i].position.y, backgrounds[i].position.z);

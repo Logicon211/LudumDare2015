@@ -56,6 +56,13 @@ public class NuclearMan : MonoBehaviour {
 			RB.gravityScale = g;
 		}
 
+		//Punching
+		if(Input.GetButtonDown("Punch")) {
+			anim.SetBool("Punching", true);
+		} else if(Input.GetButtonUp("Punch")) {
+			anim.SetBool("Punching", false);
+		}
+
 		//Firing Laser
 		if (Input.GetButtonDown ("Laser")) {
 			if(Heat >= 5){
