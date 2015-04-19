@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\GUIHeatBar.cs" />
      <Compile Include="Assets\Scripts\GUIPlacement.cs" />
      <Compile Include="Assets\Scripts\HeatTest.cs" />
+     <Compile Include="Assets\Scripts\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\HeathTest.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\NuclearMan.cs" />
