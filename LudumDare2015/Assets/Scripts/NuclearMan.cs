@@ -154,7 +154,7 @@ public class NuclearMan : MonoBehaviour {
 
 			//if(RB.velocity.y < 0 && transform.position.y - col.transform.position.y - RB.velocity.y * Time.fixedDeltaTime > maxDistance - deadZone) {
 
-			if(RB.velocity.y < 0) {// && transform.position.y - col.transform.position.y > maxDistance) {
+			if(RB.velocity.y < 0 && !(Input.GetAxis("Vertical") < 0)) {// && transform.position.y - col.transform.position.y > maxDistance) {
 				RB.gravityScale = 0;
 				RB.velocity = new Vector2(RB.velocity.x, 0);
 				anim.SetBool("Jumping", false);
@@ -166,7 +166,6 @@ public class NuclearMan : MonoBehaviour {
 	public void Damage(float value){
 		Heat -= value;
 		HeatBar.size = Heat / 100f;
-		Debug.Log (Heat);
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
