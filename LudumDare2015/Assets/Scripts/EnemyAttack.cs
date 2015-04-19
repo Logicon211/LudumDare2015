@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour {
 
 	private bool isHugging = false;
 
-	private float currSpeed;
+	public float currSpeed;
 	private Enemy enemy;
 
 	private NuclearMan player;
@@ -43,12 +43,14 @@ public class EnemyAttack : MonoBehaviour {
 			player = other.gameObject.GetComponent<NuclearMan>();
 			isHugging = true;
 		}
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D other){
 		if(other.CompareTag("Player")) {
 			player = null;
 			isHugging = false;
+		}
 		}
 	}
 

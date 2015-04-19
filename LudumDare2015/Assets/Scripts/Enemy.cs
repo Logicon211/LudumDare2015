@@ -16,16 +16,18 @@ public class Enemy : MonoBehaviour {
 	private Animator animate;					//beats the fuck out of me
 	private Rigidbody2D enemyRigidbody;
 	private Transform weapon;
+	private EnemyAttack eAtk;
 	
 	private float currPosition;					//used to hold the current position relative to the player
 	private float currY;						//used to hold current y position for flying
-	private bool closeToGround = false;
+
+	public float initCharge;
 	public bool attackReady = false;			//used by EnemyAttack to tell Enemy when to move to attack
 	public bool readyToCharge = false;
 
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
-
+		eAtk = transform.GetComponentInChildren<EnemyAttack>();
 		enemyRigidbody = GetComponent<Rigidbody2D>();
 		if(flying){
 			enemyRigidbody.gravityScale = 0;
@@ -122,6 +124,7 @@ public class Enemy : MonoBehaviour {
 		}
 		if(Mathf.Abs(currY) > atkRange){
 			enemyRigidbody.velocity -=(new Vector2(transform.up.x, transform.up.y) * movSpeed * Time.deltaTime);
+
 		}
 	}//end of Fly()
 
@@ -130,39 +133,30 @@ public class Enemy : MonoBehaviour {
 		//get the current y and x variables
 		currPosition = target.position.x - transform.position.x;
 		currY = transform.position.y - target.position.y;
-		
-		//Changing his direction
 
-		if (Mathf.Abs(currPosition) < atkRange && !readyToCharge){
-			if (currPosition > float.Epsilon){
-				if(currY > float.Epsilon && currY > atkRange){
-					enemyRigidbody.velocity += (new Vector2(-transform.right.x, -transform.up.y) * movSpeed * Time.deltaTime);
-				}
-				else
-					enemyRigidbody.velocity += (new Vector2(-transform.right.x, -transform.right.y) * movSpeed * Time.deltaTime);
-				if(facingRight){
-					Flip();
-				}
-			}
-			if (currPosition < float.Epsilon){
-				if(currY > float.Epsilon && currY > atkRange){
-					enemyRigidbody.velocity -= (new Vector2(-transform.right.x, transform.up.y) * movSpeed * Time.deltaTime);
-				}
-				else
-					enemyRigidbody.velocity -= (new Vector2(-transform.right.x, -transform.right.y) * movSpeed * Time.deltaTime);
-				if(!facingRight){
-					Flip();
-				}
+		if(Mathf.Abs(currY) > 1f){
+			enemyRigidbody.velocity -=(new Vector2(transform.up.x, transform.up.y) * movSpeed * Time.deltaTime);
+			Debug.Log(currY);
+		}
+		if(Mathf.Abs(currY) <= 2f && !readyToCharge)
+			readyToCharge = true;
+		if((currPosition) < 0 && readyToCharge){
+			enemyRigidbody.velocity -=(new Vector2(transform.right.x, transform.right.y) * movSpeed * Time.deltaTime);
+			if(facingRight){
+				Flip();
+				eAtk.currSpeed = eAtk.atkSpeed;
+				attackReady = false;
 			}
 		}
-//		if (Mathf.Abs(currPosition) < (atkRange - 5f) && Mathf.Abs (currPosition) > (atkRange + 5f)){
-//			readyToCharge = true;
-//			Debug.Log("set to true");
-//		}
-//		if(Mathf.Abs(currY) > 1f && readyToCharge){
-//			enemyRigidbody.velocity -=(new Vector2(transform.up.x, transform.up.y) * movSpeed * Time.deltaTime);
-//		}
-
-
+		else if((currPosition) > 0 && readyToCharge){
+			enemyRigidbody.velocity +=(new Vector2(transform.right.x, transform.right.y) * movSpeed * Time.deltaTime);
+			if(!facingRight){
+				Flip();
+				eAtk.currSpeed = eAtk.atkSpeed;
+				attackReady = false;
+			}
+		}
+		
+		
 	}
 }
