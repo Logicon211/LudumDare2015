@@ -5,6 +5,8 @@ public class Laser : MonoBehaviour {
 
 	public int damageAmount = 10;
 
+	public NuclearMan player {get; set;}
+
 	// Use this for initialization
 	void Start () {
 	
@@ -20,6 +22,7 @@ public class Laser : MonoBehaviour {
 		IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
 		if(damagable != null) {
 			damagable.Damage(damageAmount);
+			player.ChangeHeat(-5);
 		}
 	}
 

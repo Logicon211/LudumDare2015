@@ -22,6 +22,7 @@ public class Punch : MonoBehaviour {
 			if(damagable != null) {
 				GetComponent<AudioSource>().Play();
 				damagable.Damage(damageAmount);
+				player.ChangeHeat(-10);
 			}
 		//}
 	}
