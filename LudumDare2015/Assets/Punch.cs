@@ -4,7 +4,7 @@ using System.Collections;
 public class Punch : MonoBehaviour {
 
 	NuclearMan player;
-	int damageAmount = 5;
+	int damageAmount = 10;
 
 	// Use this for initialization
 	void Start () {
