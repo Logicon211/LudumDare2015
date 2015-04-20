@@ -105,7 +105,6 @@ public class IntroSpriteFlow : MonoBehaviour
 		FadeToBlack();
 		
 		// If the screen is almost black...
-		Debug.Log(GetComponent<GUITexture>().color.a);
 		if(GetComponent<GUITexture>().color.a >= 0.95f) {
 			// ... reload the level.
 			Application.LoadLevel(levelToLoad);
