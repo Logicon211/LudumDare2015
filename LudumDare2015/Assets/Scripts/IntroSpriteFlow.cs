@@ -12,6 +12,7 @@ public class IntroSpriteFlow : MonoBehaviour
 	private bool sceneStarting = true;      // Whether or not the scene is still fading in.
 	private int sceneEnding = 0;
 	private SpriteRenderer spriteRenderer;
+	public GUITexture gui;
 
 	void Start ()
 	{
@@ -27,7 +28,7 @@ public class IntroSpriteFlow : MonoBehaviour
 	
 	void Update ()
 	{
-		if (Input.anyKey) {
+		if (Input.anyKeyDown) {
 			if(sceneEnding <5){
 			sceneEnding++;
 			}

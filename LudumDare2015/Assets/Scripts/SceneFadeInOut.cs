@@ -78,6 +78,6 @@ public class SceneFadeInOut : MonoBehaviour
 		// If the screen is almost black...
 		if(GetComponent<GUITexture>().color.a >= 0.95f)
 			// ... reload the level.
-			Application.LoadLevel("TitleScreen");
+			Application.LoadLevel("Scene1");
 	}
 }

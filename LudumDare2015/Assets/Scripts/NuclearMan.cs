@@ -80,6 +80,9 @@ public class NuclearMan : MonoBehaviour {
 			if(Heat >= 5)	{
 				anim.SetBool("Lasering", true);
 				isLasering = true;
+				if(laserInstance != null) {
+					Destroy(laserInstance);
+				}
 				laserInstance = Instantiate (laser, laserPoint.position, transform.rotation) as GameObject;
 				ChangeHeat (5);
 				if (!facingRight) {
