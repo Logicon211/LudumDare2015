@@ -10,7 +10,7 @@ public class GUIBorderText : MonoBehaviour {
 
 	float oldWidth;
 	float oldHeight;
-	int fontSize = 16;
+//	int fontSize = 16;
 	public float Ratio = 20; // public
 	Text txt;
 	RectTransform RT2;

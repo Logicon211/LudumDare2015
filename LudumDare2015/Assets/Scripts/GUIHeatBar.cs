@@ -19,7 +19,7 @@ public class GUIHeatBar: MonoBehaviour {
 		
 		//Rect rectGUILabel = new Rect (halfCameraWidth + 10, Screen.height - pos.y - 15, 100, 22);   
 		//this.transform.position = new Vector3(halfCameraWidth, Screen.height - pos.y - 15, 22);
-		this.transform.position = new Vector3(100, 400, 22);
+		this.transform.position = new Vector3(100, Screen.width/5, 22);
 
 		
 		

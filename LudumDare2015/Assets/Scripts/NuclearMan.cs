@@ -209,6 +209,9 @@ public class NuclearMan : MonoBehaviour {
 		Health -= value;
 		HealthBar.size = Health / 100f;
 		GetComponent<AudioSource>().Play();
+		if (Health <= 0) {
+			Application.LoadLevel("Game_Over");
+		}
 		//Debug.Log (Health);
 	}
 }
