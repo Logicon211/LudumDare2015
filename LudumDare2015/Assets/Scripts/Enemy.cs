@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour, IDamagable {
 	public bool attackReady = false;			//used by EnemyAttack to tell Enemy when to move to attack
 	public bool readyToCharge = false;
 
+	private bool aggroCheck = false;
+
 	public GameObject explosion;
 
 	private int touchingPlatforms = 0;
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour, IDamagable {
 	void Update () {
 		if(target != null ) {
 			if(Mathf.Abs(transform.position.x - target.position.x) < aggro) {
+				aggroCheck = true;
 				if (!flying)
 					Walk();
 				else if (attackReady)
@@ -68,7 +71,6 @@ public class Enemy : MonoBehaviour, IDamagable {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-		
 		foreach (Transform child in transform){
 			Vector3 childScale = child.localScale;
 			childScale.x  *= -1;
@@ -101,17 +103,18 @@ public class Enemy : MonoBehaviour, IDamagable {
 	}//end of Walk()
 
 	void Fly(){
+
 		if(target != null) {
 			//get the current y and x variables
 			currPosition = target.position.x - transform.position.x;
 			currY = transform.position.y - target.position.y;
-
+		
 			//Changing his direction
 			if(Mathf.Abs(currPosition) > atkRange && Mathf.Abs(currPosition) < aggro){
 				//Move enemy left
 				if (currPosition < float.Epsilon){
 					if(currY > float.Epsilon && currY > atkRange){
-						enemyRigidbody.velocity += (new Vector2(-transform.right.x, -transform.up.y) * movSpeed * Time.deltaTime);
+						enemyRigidbody.velocity += (new Vector2(-transform.right.x, -transform.right.y) * movSpeed * Time.deltaTime);
 					}
 					else
 						enemyRigidbody.velocity += (new Vector2(-transform.right.x, -transform.right.y) * movSpeed * Time.deltaTime);
@@ -122,7 +125,7 @@ public class Enemy : MonoBehaviour, IDamagable {
 				//Move enemy right
 				if (currPosition > float.Epsilon){
 					if(currY > float.Epsilon && currY > atkRange){
-						enemyRigidbody.velocity -= (new Vector2(-transform.right.x, transform.up.y) * movSpeed * Time.deltaTime);
+						enemyRigidbody.velocity -= (new Vector2(-transform.right.x, transform.right.y) * movSpeed * Time.deltaTime);
 					}
 					else
 						enemyRigidbody.velocity -= (new Vector2(-transform.right.x, -transform.right.y) * movSpeed * Time.deltaTime);
@@ -131,10 +134,13 @@ public class Enemy : MonoBehaviour, IDamagable {
 					}
 				}
 			}
-			if(Mathf.Abs(currY) < atkRange){
+			if((currY) < 5){
 				enemyRigidbody.velocity +=(new Vector2(transform.up.x, transform.up.y) * movSpeed * Time.deltaTime);
+				if(aggroCheck)
+					Debug.Log("fly up");
+
 			}
-			if(Mathf.Abs(currY) > atkRange){
+			if((currY) > 5){
 				enemyRigidbody.velocity -=(new Vector2(transform.up.x, transform.up.y) * movSpeed * Time.deltaTime);
 
 			}
@@ -143,6 +149,9 @@ public class Enemy : MonoBehaviour, IDamagable {
 
 	//If attackReady is true, this will cause the enemy to fly towards the player
 	void FlyAttack(){
+		if(aggroCheck){
+			Debug.Log("flying attack");
+		}
 		if(target != null) {
 			//get the current y and x variables
 			currPosition = target.position.x - transform.position.x;
@@ -159,6 +168,7 @@ public class Enemy : MonoBehaviour, IDamagable {
 					Flip();
 					eAtk.currSpeed = eAtk.atkSpeed;
 					attackReady = false;
+					Debug.Log("flip");
 				}
 			}
 			else if((currPosition) > 0 && readyToCharge){
@@ -195,7 +205,7 @@ public class Enemy : MonoBehaviour, IDamagable {
 	}
 
 	void OnTriggerExit2D(Collider2D col) {
-		if(col.CompareTag("OneWayPlatform") && touchingPlatforms-- == 1) {
+		if(col.CompareTag("OneWayPlatform") && touchingPlatforms-- == 1 && !flying) {
 			enemyRigidbody.gravityScale = g;
 		}
 	}

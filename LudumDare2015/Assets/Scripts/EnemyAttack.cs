@@ -30,6 +30,7 @@ public class EnemyAttack : MonoBehaviour {
 			currSpeed = atkSpeed;
 			player.Damage(enemy.atkDmg);
 			enemy.attackReady = false;
+			enemy.readyToCharge = false;
 
 		}
 
