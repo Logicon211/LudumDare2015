@@ -53,14 +53,28 @@ public class IntroSpriteFlow : MonoBehaviour
 	void FadeToClear ()
 	{
 		// Lerp the colour of the texture between itself and transparent.
-		GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.clear, fadeSpeed * Time.deltaTime);
+		Debug.Log(Time.deltaTime);
+		if(Time.deltaTime < 0.1f) {
+			GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.clear, fadeSpeed * Time.deltaTime);
+		} else {
+			GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
+		}
 	}
 	
 	
 	void FadeToBlack ()
 	{
 		// Lerp the colour of the texture between itself and black.
+		float prevAlpha = GetComponent<GUITexture>().color.a;
+
 		GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
+
+		float currAlpha = GetComponent<GUITexture>().color.a;
+
+		if(currAlpha - prevAlpha < 0.05f) {
+			Color mask = GetComponent<GUITexture>().color;
+			GetComponent<GUITexture>().color = new Color(mask.r, mask.g, mask.b, mask.a +0.05f);
+		}
 	}
 	
 	
@@ -91,8 +105,10 @@ public class IntroSpriteFlow : MonoBehaviour
 		FadeToBlack();
 		
 		// If the screen is almost black...
-		if(GetComponent<GUITexture>().color.a >= 0.95f)
+		Debug.Log(GetComponent<GUITexture>().color.a);
+		if(GetComponent<GUITexture>().color.a >= 0.95f) {
 			// ... reload the level.
 			Application.LoadLevel(levelToLoad);
+		}
 	}
 }
