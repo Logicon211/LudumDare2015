@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\NuclearMan.cs" />
      <Compile Include="Assets\Scripts\Parallaxing.cs" />
      <Compile Include="Assets\Scripts\Pause_Menu.cs" />
+     <Compile Include="Assets\Scripts\TitleScreen.cs" />
      <Compile Include="Assets\WeedBarrel.cs" />
      <Compile Include="Assets\explosion.cs" />
  <Reference Include="UnityEngine.UI">

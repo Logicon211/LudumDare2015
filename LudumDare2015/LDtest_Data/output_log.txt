@@ -1,0 +1,112 @@
+Initialize engine version: 5.0.0f4 (5b98b70ebeb9)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 10.0]
+    Renderer: NVIDIA GeForce 9500 GT (ID=0x640)
+    Vendor:   NVIDIA
+    VRAM:     1007 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.082 seconds
+desktop: 1680x1050 60Hz; virtual: 2960x1050 at -1280,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\System.Core.dll (this message is harmless)
+enter
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Platform assembly: C:\Users\Chad\Development\Git\TESTUNITY\LudumDare2015\LudumDare2015\LDtest_Data\Managed\System.dll (this message is harmless)
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1713)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.621067 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 653.
+Total: 0.455962 ms (FindLiveObjects: 0.096667 ms CreateObjectMapping: 0.035501 ms MarkObjects: 0.310961 ms  DeleteObjects: 0.008982 ms)
+
+enemy initialized
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+95
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+90
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+80
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+75
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+70
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+65
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+60
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+55
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+50
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+45
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+40
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+35
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+30
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+25
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+20
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+15
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Crash!!!
