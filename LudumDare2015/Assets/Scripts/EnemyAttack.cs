@@ -11,10 +11,12 @@ public class EnemyAttack : MonoBehaviour {
 	private Enemy enemy;
 
 	private NuclearMan player;
+	private Animator anim;
 	// Use this for initialization
 	void Start () {
 		currSpeed = atkSpeed;
 		enemy = transform.parent.GetComponent<Enemy>();
+		anim = transform.parent.GetComponent<Animator>();
 	}
 	void Update(){
 		//Debug.Log (currSpeed);
@@ -26,15 +28,19 @@ public class EnemyAttack : MonoBehaviour {
 		}
 		if (currSpeed <= 0 && isHugging && player != null){
 			currSpeed = atkSpeed;
-			player.Damage(5f);
+			player.Damage(enemy.atkDmg);
 			enemy.attackReady = false;
 
 		}
 
 		if(isHugging) {
-			transform.parent.GetComponent<Animator>().SetBool("Punching", true);
+			if(anim != null) {
+				transform.parent.GetComponent<Animator>().SetBool("Punching", true);
+			}
 		} else {
-			transform.parent.GetComponent<Animator>().SetBool("Punching", false);
+			if(anim != null) {
+				transform.parent.GetComponent<Animator>().SetBool("Punching", false);
+			}
 		}
 
 	}

@@ -58,6 +58,6 @@ public class CameraFollow : MonoBehaviour
 		
 		// Set the camera's position to the target position with the same z component.
 		//Debug.Log(player.position.x + ", " + player.position.y);
-		transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+		transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 9f, transform.position.z);
 	}
 }

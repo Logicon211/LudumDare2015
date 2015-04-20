@@ -32,7 +32,7 @@ public class NuclearMan : MonoBehaviour {
 	public Scrollbar HeatBar;
 	public float Heat = 100;
 
-	public bool isPunching = false;
+	//public bool isPunching = false;
 	public bool isLasering = false;
 	private Transform laserPoint;
 
@@ -67,11 +67,11 @@ public class NuclearMan : MonoBehaviour {
 		//Punching
 		if(Input.GetButtonDown("Punch")) {
 			anim.SetBool("Punching", true);
-			isPunching = true;
+			//isPunching = true;
 			speed = 4f;
 		} else if(Input.GetButtonUp("Punch")) {
 			anim.SetBool("Punching", false);
-			isPunching = false;
+			//isPunching = false;
 			speed = 10f;
 		}
 
@@ -208,6 +208,7 @@ public class NuclearMan : MonoBehaviour {
 	public void Damage(float value){
 		Health -= value;
 		HealthBar.size = Health / 100f;
+		GetComponent<AudioSource>().Play();
 		//Debug.Log (Health);
 	}
 }

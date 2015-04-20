@@ -17,11 +17,12 @@ public class Punch : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		if(player.isPunching) {
+		//if(player.isPunching) {
 			IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
 			if(damagable != null) {
+				GetComponent<AudioSource>().Play();
 				damagable.Damage(damageAmount);
 			}
-		}
+		//}
 	}
 }

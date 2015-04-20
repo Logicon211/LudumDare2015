@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour, IDamagable {
 	
 	private Transform target;					//Allows enemy to move to player
 	
@@ -25,14 +25,19 @@ public class Enemy : MonoBehaviour {
 	public bool attackReady = false;			//used by EnemyAttack to tell Enemy when to move to attack
 	public bool readyToCharge = false;
 
+	public GameObject explosion;
+
+	private int touchingPlatforms = 0;
+	private float g = 0;
+
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		eAtk = transform.GetComponentInChildren<EnemyAttack>();
 		enemyRigidbody = GetComponent<Rigidbody2D>();
+		g = enemyRigidbody.gravityScale;
 		if(flying){
 			enemyRigidbody.gravityScale = 0;
 		}
-		Debug.Log("enemy initialized");
 	}
 	
 	// Update is called once per frame
@@ -136,7 +141,6 @@ public class Enemy : MonoBehaviour {
 
 		if(Mathf.Abs(currY) > 1f){
 			enemyRigidbody.velocity -=(new Vector2(transform.up.x, transform.up.y) * movSpeed * Time.deltaTime);
-			Debug.Log(currY);
 		}
 		if(Mathf.Abs(currY) <= 2f && !readyToCharge)
 			readyToCharge = true;
@@ -158,5 +162,32 @@ public class Enemy : MonoBehaviour {
 		}
 		
 		
+	}
+
+	public void Damage(int damage) {
+		Instantiate(explosion, transform.position, transform.rotation);
+		Destroy(this.gameObject);
+	}
+	
+	void OnTriggerEnter2D(Collider2D col) {
+		if(col.CompareTag("OneWayPlatform")) {
+			touchingPlatforms++;
+			
+			//float maxDistance = (col.transform.localScale.y + transform.localScale.y) / 2;
+			
+			//if(RB.velocity.y < 0 && transform.position.y - col.transform.position.y - RB.velocity.y * Time.fixedDeltaTime > maxDistance - deadZone) {
+			
+			if(enemyRigidbody.velocity.y < 0 && !(Input.GetAxis("Vertical") < 0)) {// && transform.position.y - col.transform.position.y > maxDistance) {
+				enemyRigidbody.gravityScale = 0;
+				enemyRigidbody.velocity = new Vector2(enemyRigidbody.velocity.x, 0);
+				//transform.position = new Vector3(transform.position.x, col.transform.position.y + maxDistance, 0);
+			}
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D col) {
+		if(col.CompareTag("OneWayPlatform") && touchingPlatforms-- == 1) {
+			enemyRigidbody.gravityScale = g;
+		}
 	}
 }
