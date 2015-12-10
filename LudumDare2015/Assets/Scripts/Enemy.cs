@@ -136,8 +136,9 @@ public class Enemy : MonoBehaviour, IDamagable {
 			}
 			if((currY) < 5){
 				enemyRigidbody.velocity +=(new Vector2(transform.up.x, transform.up.y) * movSpeed * Time.deltaTime);
-				if(aggroCheck)
-					Debug.Log("fly up");
+				if(aggroCheck) {
+					//Debug.Log("fly up");
+				}
 
 			}
 			if((currY) > 5){
@@ -150,7 +151,7 @@ public class Enemy : MonoBehaviour, IDamagable {
 	//If attackReady is true, this will cause the enemy to fly towards the player
 	void FlyAttack(){
 		if(aggroCheck){
-			Debug.Log("flying attack");
+			//Debug.Log("flying attack");
 		}
 		if(target != null) {
 			//get the current y and x variables
