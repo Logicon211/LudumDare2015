@@ -62,7 +62,7 @@ public class EnemyAttack : MonoBehaviour {
 	
 
 
-		void Attack(){
+	void Attack() {
 		transform.Translate(Vector2.right  * 10, Space.Self);
 		//transform.Translate(-Vector2.right * 10, Space.Self);
 	}

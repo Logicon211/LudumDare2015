@@ -20,19 +20,17 @@ public class Laser : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col) {
 
 		IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
-		Debug.Log ("COLLISION WITH LASER");
 		if(damagable != null) {
 			damagable.Damage(damageAmount);
 			player.ChangeHeat(-5);
 		}
 	}
 
-	/*void OnTriggerStay2D(Collider2D col) {
+	void OnTriggerStay2D(Collider2D col) {
 		
 		IDamagable damagable = (IDamagable)col.gameObject.GetComponent(typeof(IDamagable));
-		Debug.Log ("COLLISION WITH LASER2");
 		if(damagable != null) {
 			damagable.Damage(damageAmount);
 		}
-	}*/
+	}
 }
