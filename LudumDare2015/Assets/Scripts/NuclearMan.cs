@@ -44,10 +44,10 @@ public class NuclearMan : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		RB = GetComponent<Rigidbody2D>();
-		groundCheck = transform.FindChild ("groundCheck");
+		groundCheck = transform.Find ("groundCheck");
 		g = RB.gravityScale;
 		heroCollider = GetComponent<BoxCollider2D>();
-		laserPoint = transform.FindChild("LaserPoint");
+		laserPoint = transform.Find("LaserPoint");
 	}
 
 	void Update() {
